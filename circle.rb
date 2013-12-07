@@ -1,5 +1,4 @@
 class Circle
-  attr_reader :radius
 
   def initialize(radius)
     if radius < 0
