@@ -1,6 +1,10 @@
 class Square
   def initialize(side)
-    @side = side
+    if side < 0
+      raise ArgumentError.new('Side cannot be negative')
+    else
+      @side = side
+    end
   end
 
   def perimeter

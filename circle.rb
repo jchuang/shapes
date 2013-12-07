@@ -2,7 +2,11 @@ class Circle
   attr_reader :radius
 
   def initialize(radius)
-    @radius = radius
+    if radius < 0
+      raise ArgumentError.new('Radius cannot be negative')
+    else
+      @radius = radius
+    end
   end
 
   def perimeter

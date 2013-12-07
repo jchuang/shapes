@@ -11,4 +11,9 @@ describe Square do
   it 'calculates area given length of side' do
     expect(square.area).to eq(100.0)
   end
+
+  it 'raises argument error if length is negative' do
+    expect { Square.new(-2.0) } .to raise_error(ArgumentError,
+      'Side cannot be negative')
+  end
 end
