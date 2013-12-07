@@ -16,7 +16,8 @@ class Triangle
   end
 
   def area
-    # Heron's Formula for area of triangle
+    # Heron's Formula for area of triangle, via Wikipedia
+
     sp = perimeter / 2
     product = sp * (sp - @side_a) * (sp - @side_b) * (sp - @side_c)
     Math.sqrt(product)
