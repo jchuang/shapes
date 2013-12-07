@@ -1,4 +1,5 @@
 class Square
+
   def initialize(side)
     if side < 0
       raise ArgumentError.new('Side cannot be negative')
