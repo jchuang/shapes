@@ -1,11 +1,10 @@
 class Trapezoid
-
   # Like a triangle, a trapezoid can be uniquely defined by the length
   # of each side. Sides A and B are the parallel sides, in either order.
 
   def initialize(side_a, side_b, side_c, side_d)
     if side_a < 0 || side_b < 0 || side_c < 0 || side_d < 0
-      raise ArgumentError.new('Side cannot be negative')
+      raise ArgumentError, 'Side cannot be negative'
 
     else
       @side_a = side_a

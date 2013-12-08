@@ -1,10 +1,9 @@
 class Rectangle
-
   def initialize(base, height)
     if base < 0
-      raise ArgumentError.new('Base cannot be negative')
+      raise ArgumentError, 'Base cannot be negative'
     elsif height < 0
-      raise ArgumentError.new('Height cannot be negative')
+      raise ArgumentError, 'Height cannot be negative'
 
     else
       @base = base

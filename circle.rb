@@ -1,8 +1,7 @@
 class Circle
-
   def initialize(radius)
     if radius < 0
-      raise ArgumentError.new('Radius cannot be negative')
+      raise ArgumentError, 'Radius cannot be negative'
     else
       @radius = radius
     end
