@@ -2,11 +2,29 @@ class Trapezoid
   # Like a triangle, a trapezoid can be uniquely defined by the length
   # of each side. Sides A and B are the parallel sides, in either order.
 
+  # One example of an invalid trapezoid: consider the case where the
+  # length of the shorter base plus both edges is less than the length
+  # of the longer base.
+
   def initialize(side_a, side_b, side_c, side_d)
-    if side_a < 0 || side_b < 0 || side_c < 0 || side_d < 0
+    sides = [side_a, side_b, side_c, side_d]
+    product = (-side_a + side_b + side_c + side_d) *
+              (side_a - side_b + side_c + side_d) *
+              (side_a - side_b + side_c - side_d) *
+              (side_a - side_b - side_c + side_d)
+
+    if sides.any? { |side| side < 0 }
       raise ArgumentError, 'Side cannot be negative'
 
+    elsif product < 0
+      raise ArgumentError, 'Not a valid trapezoid'
+
     else
+      if side_a == side_b
+        @height = side_c
+      else
+        @height = Math.sqrt(product) / (2 * (side_b - side_a).abs)
+      end
       @side_a = side_a
       @side_b = side_b
       @side_c = side_c
@@ -19,11 +37,6 @@ class Trapezoid
   end
 
   def area
-    # similar to Heron's Formula for a triangle, via Wikipedia
-
-    sp = perimeter / 2
-    product = (sp - @side_a) * (sp - @side_b) * (sp - @side_a - @side_c) * \
-      (sp - @side_a - @side_d)
-    (@side_a + @side_b) * Math.sqrt(product) / (@side_a - @side_b).abs
+    (@side_a + @side_b) * @height / 2
   end
 end
